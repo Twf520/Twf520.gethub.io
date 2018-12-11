@@ -301,7 +301,8 @@
         
           
             <a id="more"></a>
-<h2 id="梳理浏览器内核中线程之间的关系"><a href="#梳理浏览器内核中线程之间的关系" class="headerlink" title="梳理浏览器内核中线程之间的关系"></a>梳理浏览器内核中线程之间的关系</h2><p>到了这里，已经对浏览器的运行有了一个整体的概念，接下来，先简单梳理一些概念</p>
+<h2 id="梳理浏览器内核中线程之间的关系"><a href="#梳理浏览器内核中线程之间的关系" class="headerlink" title="梳理浏览器内核中线程之间的关系"></a>梳理浏览器内核中线程之间的关系</h2><!--more-->
+<p>到了这里，已经对浏览器的运行有了一个整体的概念，接下来，先简单梳理一些概念</p>
 <h3 id="GUI渲染线程与JS引擎线程互斥"><a href="#GUI渲染线程与JS引擎线程互斥" class="headerlink" title="GUI渲染线程与JS引擎线程互斥"></a>GUI渲染线程与JS引擎线程互斥</h3><p>由于JavaScript是可操纵DOM的，如果在修改这些元素属性同时渲染界面（即JS线程和UI线程同时运行），那么渲染线程前后获得的元素数据就可能不一致了。</p>
 <p>因此为了防止渲染出现不可预期的结果，浏览器设置GUI渲染线程与JS引擎为互斥的关系，当JS引擎执行时GUI线程会被挂起， GUI更新则会被保存在一个队列中等到JS引擎线程空闲时立即被执行。</p>
 <h3 id="JS阻塞页面加载"><a href="#JS阻塞页面加载" class="headerlink" title="JS阻塞页面加载"></a>JS阻塞页面加载</h3><p>从上述的互斥关系，可以推导出，JS如果执行时间过长就会阻塞页面。</p>
@@ -738,7 +739,7 @@
 
       
         
-          <h2 id="认识node和hexo"><a href="#认识node和hexo" class="headerlink" title="认识node和hexo"></a>认识node和hexo</h2>
+          <h1 id="认识node和hexo"><a href="#认识node和hexo" class="headerlink" title="认识node和hexo"></a>认识node和hexo</h1>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/12/08/hello-world/" rel="contents">
