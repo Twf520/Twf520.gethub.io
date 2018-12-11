@@ -538,34 +538,14 @@
 
       
         
-          
-            <h1 id="AJAX-教程"><a href="#AJAX-教程" class="headerlink" title="AJAX 教程"></a>AJAX 教程</h1><p>AJAX = Asynchronous JavaScript and XML（异步的 JavaScript 和 XML）。</p>
-<p>AJAX 不是新的编程语言，而是一种使用现有标准的新方法。</p>
-<p>AJAX 最大的优点是在不重新加载整个页面的情况下，可以与服务器交换数据并更新部分网页内容。</p>
-<p>AJAX 不需要任何浏览器插件，但需要用户允许JavaScript在浏览器上执行。</p>
-<h3 id="AJAX实例"><a href="#AJAX实例" class="headerlink" title="AJAX实例"></a>AJAX实例</h3><p><script><br>function loadXMLDoc()<br>{<br>    var xmlhttp;<br>    if (window.XMLHttpRequest)<br>    {<br>        //  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码<br>        xmlhttp=new XMLHttpRequest();<br>    }<br>    else<br>    {<br>        // IE6, IE5 浏览器执行代码<br>        xmlhttp=new ActiveXObject(“Microsoft.XMLHTTP”);<br>    }<br>    xmlhttp.onreadystatechange=function()<br>    {<br>        if (xmlhttp.readyState==4 &amp;&amp; xmlhttp.status==200)<br>        {<br>            document.getElementById(“myDiv”).innerHTML=xmlhttp.responseText;<br>        }<br>    }<br>    xmlhttp.open(“GET”,”/try/ajax/ajax_info.txt”,true);<br>    xmlhttp.send();<br>}</p>
-<h2 id=""><a href="#" class="headerlink" title=""></a></script></p><h2 id="AJAX-应用"><a href="#AJAX-应用" class="headerlink" title="AJAX 应用"></a>AJAX 应用</h2><ul>
-<li>运用XHTML+CSS来表达资讯；</li>
-<li>运用JavaScript操作DOM（Document Object Model）来执行动态效果；</li>
-<li>运用XML和XSLT操作资料;</li>
-<li>运用XMLHttpRequest或新的Fetch API与网页服务器进行异步资料交换；</li>
-<li>注意：AJAX与Flash、Silverlight和Java Applet等RIA技术是有区分的。</li>
-</ul>
-<h1 id="AJAX-创建-XMLHttpRequest-对象"><a href="#AJAX-创建-XMLHttpRequest-对象" class="headerlink" title="AJAX - 创建 XMLHttpRequest 对象"></a>AJAX - 创建 XMLHttpRequest 对象</h1><hr>
-<p>XMLHttpRequest 是 AJAX 的基础。</p>
-<hr>
-<h2 id="XMLHttpRequest-对象"><a href="#XMLHttpRequest-对象" class="headerlink" title="XMLHttpRequest 对象"></a>XMLHttpRequest 对象</h2><p>所有现代浏览器均支持 XMLHttpRequest 对象（IE5 和 IE6 使用 ActiveXObject）。</p>
-<p>XMLHttpRequest 用于在后台与服务器交换数据。这意味着可以在不重新加载整个网页的情况下，对网页的某部分进行更新。</p>
-<hr>
-<h2 id="创建-XMLHttpRequest-对象"><a href="#创建-XMLHttpRequest-对象" class="headerlink" title="创建 XMLHttpRequest 对象"></a>创建 XMLHttpRequest 对象</h2><p>所有现代浏览器（IE7+、Firefox、Chrome、Safari 以及 Opera）均内建 XMLHttpRequest 对象。</p>
-<p>创建 XMLHttpRequest 对象的语法：</p>
-<p><em>variable</em>=new XMLHttpRequest();</p>
-<p>老版本的 Internet Explorer （IE5 和 IE6）使用 ActiveX 对象：</p>
-<p><em>variable</em>=new ActiveXObject(“Microsoft.XMLHTTP”);</p>
-<p>为了应对所有的现代浏览器，包括 IE5 和 IE6，请检查浏览器是否支持 XMLHttpRequest 对象。如果支持，则创建 XMLHttpRequest 对象。如果不支持，则创建 ActiveXObject ：</p>
-<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> xmlhttp; </span><br><span class="line"><span class="keyword">if</span> (<span class="built_in">window</span>.XMLHttpRequest) &#123;     </span><br><span class="line"><span class="comment">//IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码    </span></span><br><span class="line">xmlhttp=<span class="keyword">new</span> XMLHttpRequest(); &#125; </span><br><span class="line"><span class="keyword">else</span> &#123;     <span class="comment">//IE6, IE5 浏览器执行代码     </span></span><br><span class="line">xmlhttp=<span class="keyword">new</span> ActiveXObject(<span class="string">"Microsoft.XMLHTTP"</span>); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
+          <h1 id="AJAX-教程"><a href="#AJAX-教程" class="headerlink" title="AJAX 教程"></a>AJAX 教程</h1>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/02/19/My-first-blog/" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
