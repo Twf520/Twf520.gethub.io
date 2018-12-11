@@ -79,22 +79,22 @@
 
 
 
-<meta name="description" content="梳理浏览器内核中线程之间的关系 到了这里，已经对浏览器的运行有了一个整体的概念，接下来，先简单梳理一些概念 GUI渲染线程与JS引擎线程互斥由于JavaScript是可操纵DOM的，如果在修改这些元素属性同时渲染界面（即JS线程和UI线程同时运行），那么渲染线程前后获得的元素数据就可能不一致了。 因此为了防止渲染出现不可预期的结果，浏览器设置GUI渲染线程与JS引擎为互斥的关系，当JS引擎执行时">
+<meta name="description" content="梳理浏览器内核中线程之间的关系">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JS单线程">
 <meta property="og:url" content="http://yoursite.com/2018/12/11/JS单线程/index.html">
 <meta property="og:site_name" content="BLOG">
-<meta property="og:description" content="梳理浏览器内核中线程之间的关系 到了这里，已经对浏览器的运行有了一个整体的概念，接下来，先简单梳理一些概念 GUI渲染线程与JS引擎线程互斥由于JavaScript是可操纵DOM的，如果在修改这些元素属性同时渲染界面（即JS线程和UI线程同时运行），那么渲染线程前后获得的元素数据就可能不一致了。 因此为了防止渲染出现不可预期的结果，浏览器设置GUI渲染线程与JS引擎为互斥的关系，当JS引擎执行时">
+<meta property="og:description" content="梳理浏览器内核中线程之间的关系">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/1/21/1611938b2d83a384?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/1/21/1611938b2d83a384?imageView2/0/w/960/h/720/format/webp/ignore-error/1">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/1/21/1611938b898ed9ef?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/1/21/1611938ba2b4b9f4?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/1/21/1611938b96e93485?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
-<meta property="og:updated_time" content="2018-12-11T14:22:05.058Z">
+<meta property="og:updated_time" content="2018-12-11T14:31:28.444Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS单线程">
-<meta name="twitter:description" content="梳理浏览器内核中线程之间的关系 到了这里，已经对浏览器的运行有了一个整体的概念，接下来，先简单梳理一些概念 GUI渲染线程与JS引擎线程互斥由于JavaScript是可操纵DOM的，如果在修改这些元素属性同时渲染界面（即JS线程和UI线程同时运行），那么渲染线程前后获得的元素数据就可能不一致了。 因此为了防止渲染出现不可预期的结果，浏览器设置GUI渲染线程与JS引擎为互斥的关系，当JS引擎执行时">
-<meta name="twitter:image" content="https://user-gold-cdn.xitu.io/2018/1/21/1611938b2d83a384?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
+<meta name="twitter:description" content="梳理浏览器内核中线程之间的关系">
+<meta name="twitter:image" content="https://user-gold-cdn.xitu.io/2018/1/21/1611938b2d83a384?imageView2/0/w/960/h/720/format/webp/ignore-error/1">
 
 
 
@@ -304,8 +304,7 @@
       
 
       
-        <a id="more"></a>
-<h2 id="梳理浏览器内核中线程之间的关系"><a href="#梳理浏览器内核中线程之间的关系" class="headerlink" title="梳理浏览器内核中线程之间的关系"></a>梳理浏览器内核中线程之间的关系</h2><!--more-->
+        <h1 id="梳理浏览器内核中线程之间的关系"><a href="#梳理浏览器内核中线程之间的关系" class="headerlink" title="梳理浏览器内核中线程之间的关系"></a>梳理浏览器内核中线程之间的关系</h1><a id="more"></a>
 <p>到了这里，已经对浏览器的运行有了一个整体的概念，接下来，先简单梳理一些概念</p>
 <h3 id="GUI渲染线程与JS引擎线程互斥"><a href="#GUI渲染线程与JS引擎线程互斥" class="headerlink" title="GUI渲染线程与JS引擎线程互斥"></a>GUI渲染线程与JS引擎线程互斥</h3><p>由于JavaScript是可操纵DOM的，如果在修改这些元素属性同时渲染界面（即JS线程和UI线程同时运行），那么渲染线程前后获得的元素数据就可能不一致了。</p>
 <p>因此为了防止渲染出现不可预期的结果，浏览器设置GUI渲染线程与JS引擎为互斥的关系，当JS引擎执行时GUI线程会被挂起， GUI更新则会被保存在一个队列中等到JS引擎线程空闲时立即被执行。</p>
@@ -374,7 +373,7 @@
 <p>可以简单理解下：<strong>GPU中，各个复合图层是单独绘制的，所以互不影响</strong>，这也是为什么某些场景硬件加速效果一级棒</p>
 <p>可以<code>Chrome源码调试 -&gt; More Tools -&gt; Rendering -&gt; Layer borders</code>中看到，黄色的就是复合图层信息</p>
 <p>如下图。可以验证上述的说法</p>
-<p><img src="https://user-gold-cdn.xitu.io/2018/1/21/1611938b2d83a384?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="img"></p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/1/21/1611938b2d83a384?imageView2/0/w/960/h/720/format/webp/ignore-error/1" alt="img"></p>
 <p><strong>如何变成复合图层（硬件加速）</strong></p>
 <p>将该元素变成一个复合图层，就是传说中的硬件加速技术</p>
 <ul>
@@ -656,7 +655,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#梳理浏览器内核中线程之间的关系"><span class="nav-number">1.</span> <span class="nav-text">梳理浏览器内核中线程之间的关系</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#GUI渲染线程与JS引擎线程互斥"><span class="nav-number">1.1.</span> <span class="nav-text">GUI渲染线程与JS引擎线程互斥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JS阻塞页面加载"><span class="nav-number">1.2.</span> <span class="nav-text">JS阻塞页面加载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#WebWorker，JS的多线程？"><span class="nav-number">1.3.</span> <span class="nav-text">WebWorker，JS的多线程？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#WebWorker与SharedWorker"><span class="nav-number">1.4.</span> <span class="nav-text">WebWorker与SharedWorker</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简单梳理下浏览器渲染流程"><span class="nav-number">2.</span> <span class="nav-text">简单梳理下浏览器渲染流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#load事件与DOMContentLoaded事件的先后"><span class="nav-number">2.1.</span> <span class="nav-text">load事件与DOMContentLoaded事件的先后</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#css加载是否会阻塞dom树渲染？"><span class="nav-number">2.2.</span> <span class="nav-text">css加载是否会阻塞dom树渲染？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#普通图层和复合图层"><span class="nav-number">2.3.</span> <span class="nav-text">普通图层和复合图层</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#从Event-Loop谈JS的运行机制"><span class="nav-number">3.</span> <span class="nav-text">从Event Loop谈JS的运行机制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#事件循环机制进一步补充"><span class="nav-number">3.1.</span> <span class="nav-text">事件循环机制进一步补充</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单独说说定时器"><span class="nav-number">3.2.</span> <span class="nav-text">单独说说定时器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#setTimeout而不是setInterval"><span class="nav-number">3.3.</span> <span class="nav-text">setTimeout而不是setInterval</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件循环进阶：macrotask与microtask"><span class="nav-number">4.</span> <span class="nav-text">事件循环进阶：macrotask与microtask</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#梳理浏览器内核中线程之间的关系"><span class="nav-number">1.</span> <span class="nav-text">梳理浏览器内核中线程之间的关系</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#GUI渲染线程与JS引擎线程互斥"><span class="nav-number">1.0.1.</span> <span class="nav-text">GUI渲染线程与JS引擎线程互斥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JS阻塞页面加载"><span class="nav-number">1.0.2.</span> <span class="nav-text">JS阻塞页面加载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#WebWorker，JS的多线程？"><span class="nav-number">1.0.3.</span> <span class="nav-text">WebWorker，JS的多线程？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#WebWorker与SharedWorker"><span class="nav-number">1.0.4.</span> <span class="nav-text">WebWorker与SharedWorker</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简单梳理下浏览器渲染流程"><span class="nav-number">1.1.</span> <span class="nav-text">简单梳理下浏览器渲染流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#load事件与DOMContentLoaded事件的先后"><span class="nav-number">1.1.1.</span> <span class="nav-text">load事件与DOMContentLoaded事件的先后</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#css加载是否会阻塞dom树渲染？"><span class="nav-number">1.1.2.</span> <span class="nav-text">css加载是否会阻塞dom树渲染？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#普通图层和复合图层"><span class="nav-number">1.1.3.</span> <span class="nav-text">普通图层和复合图层</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#从Event-Loop谈JS的运行机制"><span class="nav-number">1.2.</span> <span class="nav-text">从Event Loop谈JS的运行机制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#事件循环机制进一步补充"><span class="nav-number">1.2.1.</span> <span class="nav-text">事件循环机制进一步补充</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单独说说定时器"><span class="nav-number">1.2.2.</span> <span class="nav-text">单独说说定时器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#setTimeout而不是setInterval"><span class="nav-number">1.2.3.</span> <span class="nav-text">setTimeout而不是setInterval</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件循环进阶：macrotask与microtask"><span class="nav-number">1.3.</span> <span class="nav-text">事件循环进阶：macrotask与microtask</span></a></li></ol></div>
             
 
           </div>
