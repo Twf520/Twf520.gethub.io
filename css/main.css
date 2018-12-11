@@ -57,7 +57,6 @@ dfn {
 h1 {
   font-size: 2em;
   margin: 0.67em 0;
-  text-align:center;
 }
 mark {
   background: #ff0;
@@ -1824,7 +1823,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ed2eff;
+  background: #d7ffff;
 }
 .links-of-blogroll {
   font-size: 13px;
